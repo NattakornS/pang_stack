@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./strapi-nginx.conf:/etc/nginx/sites-available/strapi.conf:ro
+    networks:
+      - pang-stack-network
+    # command: [nginx-debug, '-g', 'daemon off;']
   pang_cms:
     image: strapi/strapi
     container_name: pang_cms
@@ -30,14 +40,15 @@ services:
       - 5000:5000
     expose:
       - 5000
+    networks:
+      - pang-stack-network
     entrypoint:
       - sh
       - docker-entrypoint.sh
     volumes:
       - ./ml-api:/api
       - ./shared:/shared
-    restart: always
-    
+    restart: always   
   mongo_db:
     image: mongo
     container_name: mongo_db
