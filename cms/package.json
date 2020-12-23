@@ -11,23 +11,23 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@tensorflow/tfjs": "^2.7.0",
-    "@tensorflow/tfjs-node": "^2.7.0",
     "strapi": "3.4.0",
     "strapi-admin": "3.4.0",
-    "strapi-connector-mongoose": "3.4.0",
-    "strapi-plugin-content-manager": "3.4.0",
+    "strapi-utils": "3.4.0",
     "strapi-plugin-content-type-builder": "3.4.0",
+    "strapi-plugin-content-manager": "3.4.0",
+    "strapi-plugin-users-permissions": "3.4.0",
     "strapi-plugin-email": "3.4.0",
     "strapi-plugin-upload": "3.4.0",
-    "strapi-plugin-users-permissions": "3.4.0",
-    "strapi-utils": "3.4.0"
+    "strapi-connector-bookshelf": "3.4.0",
+    "knex": "<0.20.0",
+    "mysql": "latest"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "1c663cd1-c690-4587-b542-9263b199c498"
+    "uuid": "7bbc8f90-299a-4e74-a6a7-f03fb5b0e191"
   },
   "engines": {
     "node": ">=10.16.0 <=14.x.x",
