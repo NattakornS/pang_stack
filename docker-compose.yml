@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  pang_cms:
+    image: strapi/strapi
+    container_name: pang_cms
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    #    links:
+    #      - mongo:mongo
+    networks:
+      - pang-stack-network
+    volumes:
+      - ./cms:/srv/app
+      - ./model:/srv/model
+    ports:
+      - "1337:1337"
+  ml_api:
+    build:
+      context: ./ml-api
+      dockerfile: local.Dockerfile
+    ports:
+      - 5000:5000
+    expose:
+      - 5000
+    entrypoint:
+      - sh
+      - docker-entrypoint.sh
+    volumes:
+      - ./ml-api:/api
+      - ./shared:/shared
+    restart: always
+    
+  mongo_db:
+    image: mongo
+    container_name: mongo_db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    networks:
+      - pang-stack-network
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+networks:
+  pang-stack-network:
+    driver: bridge
+
+volumes:
+  mongo_data:

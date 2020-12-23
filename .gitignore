@@ -1,0 +1,10 @@
+#notebook
+notebook
+
+shared/*
+
+model
+
+.env
+
+documentation

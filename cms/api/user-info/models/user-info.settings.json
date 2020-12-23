@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_infos",
+  "info": {
+    "name": "User Info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "c1": {
+      "type": "string"
+    },
+    "c2": {
+      "type": "string"
+    },
+    "c3": {
+      "type": "string"
+    },
+    "c4": {
+      "type": "string"
+    },
+    "n1": {
+      "type": "float"
+    },
+    "n2": {
+      "type": "integer"
+    },
+    "n3": {
+      "type": "integer"
+    },
+    "n4": {
+      "type": "float"
+    }
+  }
+}
