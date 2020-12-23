@@ -21,6 +21,7 @@ from lightgbm import LGBMClassifier
 from catboost import CatBoostClassifier
 
 import joblib
+import controller.prediction
 
 @app.route('/')
 @cross_origin()
@@ -56,11 +57,12 @@ def returndata():
     result = "result"
     return result
 
-@app.route('/pred', methods=['GET'])
+@app.route('/pred', methods=['POST'])
 @cross_origin()
 def predict():
+    data = request.get_json()
     bst = joblib.load('/shared/model/lgb.pkl')
-    xtest = [[2,3,1,1,85000.0,97,48,68000.0]]
+    xtest = [data]
     result = bst.predict(xtest)
     return json.dumps({
         'result': "{}".format(result[0])
