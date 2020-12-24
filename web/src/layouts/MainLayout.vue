@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="main-header bg-green gt-sm">
       <q-toolbar>
         <q-btn
           flat
@@ -11,11 +11,9 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+        <q-toolbar-title> KPlus </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
 
@@ -26,10 +24,7 @@
       content-class="bg-grey-1"
     >
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
+        <q-item-label header class="text-grey-8">
           Essential Links
         </q-item-label>
         <EssentialLink
@@ -43,65 +38,87 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer elevated class="bg-white text-white full-width lt-md">
+      <q-tabs v-model="tab" class="text-teal full-width" align="center">
+        <q-tab name="home" icon="home" label="Home" />
+        <q-tab name="market" icon="storefront" label="Market" />
+        <q-tab name="monet" icon="monetization_on" label="Money" />
+
+        <q-btn
+          style="margin-top: -1rem; z-index: 1"
+          class="absolute-center"
+          color="teal-4"
+          round
+          size="xl"
+          icon="monetization_on"
+        ></q-btn>
+
+        <q-tab name="scan" icon="qr_code_scanner" label="Scan" />
+        <q-tab name="others" icon="more_horiz" label="Others" />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from "components/EssentialLink.vue";
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Docs",
+    caption: "quasar.dev",
+    icon: "school",
+    link: "https://quasar.dev",
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Github",
+    caption: "github.com/quasarframework",
+    icon: "code",
+    link: "https://github.com/quasarframework",
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "Discord Chat Channel",
+    caption: "chat.quasar.dev",
+    icon: "chat",
+    link: "https://chat.quasar.dev",
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "Forum",
+    caption: "forum.quasar.dev",
+    icon: "record_voice_over",
+    link: "https://forum.quasar.dev",
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: "Twitter",
+    caption: "@quasarframework",
+    icon: "rss_feed",
+    link: "https://twitter.quasar.dev",
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: "Facebook",
+    caption: "@QuasarFramework",
+    icon: "public",
+    link: "https://facebook.quasar.dev",
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+    title: "Quasar Awesome",
+    caption: "Community Quasar projects",
+    icon: "favorite",
+    link: "https://awesome.quasar.dev",
+  },
+];
 
 export default {
-  name: 'MainLayout',
+  name: "MainLayout",
   components: { EssentialLink },
-  data () {
+  data() {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
-    }
-  }
-}
+      essentialLinks: linksData,
+      tab: 'money'
+    };
+  },
+};
 </script>
+<style lang="scss">
+</style>

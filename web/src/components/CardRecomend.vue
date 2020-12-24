@@ -1,21 +1,25 @@
 <template>
   <div id="app">
-    <Tinder :queue.sync="queue">
+    <Tinder ref="tinder" :queue.sync="queue">
       <template slot-scope="{ data }">
         <!-- <div
           class="pic"
           :style="`background-image:url(${data.key})`"
         ></div> -->
-        <q-card>
-          <img :src="data.key" @click="window.open(data.link, '_blank');">
-
+        <q-card @click="openlink(data)" class="full-height">
+          <img :src="data.key">
+  
           <q-card-section>
             <div class="text-h6">{{data.name}}</div>
             <div class="text-subtitle2">{{data.desc}}</div>
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            {{ data.condition }}
+            <vue-markdown-it
+              v-if="data.detail"
+              :source="data.detail"
+              id="editor"
+            />
           </q-card-section>
         </q-card>
       </template>
@@ -54,32 +58,72 @@
 
 <script>
 import Tinder from "vue-tinder";
-
+import VueMarkdownIt from "vue-markdown-it";
 export default {
   name: 'CardRecomend',
   components: {
     Tinder,
+    VueMarkdownIt
   },
   data: () => ({
     cards: [],
     queue: [],
+    demos:[],
+    orderCard: []
   }),
   created() {
     // this.getData();
+  },
+  mounted() {
     this.getCards();
+    // this.getCustomers();
+    this.orderSubmission();
   },
   methods: {
+    async orderSubmission() {
+      let result = await this.$axios.get(process.env.API+'submissions/'+this.$route.params.id)
+      console.log(result);
+      if (result.data) {
+        let orderCard = []
+        const sortable = Object.entries(result.data).sort((a, b) => b[1]-a[1]);
+        console.log('test : ',result.data,sortable);
+        for (const el of sortable) {
+          // console.log(`${key}: ${value}`);
+          if(el[0].includes('class')){
+            let index = parseInt(el[0].replace('class',''))
+            console.log(this.cards[index]);
+            orderCard.push(this.cards[index]) 
+          }
+        }
+        // console.log("test ; ",this.orderCard);
+        this.queue = [...orderCard]
+        console.log(this.queue);
+        // this.demos = result.data
+      }
+    },
+    async getCustomers() {
+      let result = await this.$axios.get(process.env.API+'demographics')
+      console.log(result);
+      if (result.data) {
+        this.demos = result.data
+      }
+    },
+    openlink(data) {
+      window.open(data.link, '_blank');
+    },
     async getCards() {
       let result = await this.$axios.get(process.env.API+'card-infos')
       if (result.data) {
         this.queue = []
+        this.cards = []
         for (let i = 0; i < result.data.length; i++) {
           let item = {...result.data[i]}
           item['key'] = item.external_img
           this.queue.push(item)
-          
+          this.cards.push(item)
         }       
-        console.log(this.queue); 
+        // this.cards = [...this.queue]
+        // console.log(this.queue); 
       }
     },
     /**
@@ -120,7 +164,7 @@ export default {
       if (this.queue.length < 2) {
         this.getData();
       }
-    },
+    }
   },
 };
 </script>
