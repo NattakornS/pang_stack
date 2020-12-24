@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "submissions",
+  "info": {
+    "name": "Submission"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "customer_id": {
+      "type": "integer"
+    },
+    "class0": {
+      "type": "float"
+    },
+    "class1": {
+      "type": "float"
+    },
+    "class2": {
+      "type": "float"
+    },
+    "class3": {
+      "type": "float"
+    },
+    "class4": {
+      "type": "float"
+    },
+    "class5": {
+      "type": "float"
+    },
+    "class6": {
+      "type": "float"
+    },
+    "class7": {
+      "type": "float"
+    },
+    "class8": {
+      "type": "float"
+    },
+    "class9": {
+      "type": "float"
+    },
+    "class10": {
+      "type": "float"
+    },
+    "class11": {
+      "type": "float"
+    },
+    "class12": {
+      "type": "float"
+    }
+  }
+}

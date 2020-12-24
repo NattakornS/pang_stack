@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "demographics",
+  "info": {
+    "name": "Demographic",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "c1": {
+      "type": "integer"
+    },
+    "c2": {
+      "type": "integer"
+    },
+    "n1": {
+      "type": "float"
+    },
+    "c3": {
+      "type": "integer"
+    },
+    "c4": {
+      "type": "integer"
+    },
+    "n2": {
+      "type": "float"
+    },
+    "n3": {
+      "type": "float"
+    },
+    "n4": {
+      "type": "float"
+    }
+  }
+}
