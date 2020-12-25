@@ -15,7 +15,7 @@ export default {
   border-radius: 0px;
   background: #2a3b42;
   box-shadow: inset -35px -35px 70px #243238, 
-            inset 35px 35px 70px #30444c;
+            inset 35px 35px 70px #61818d;
 
 }
 </style>
