@@ -8,4 +8,4 @@
     - write with flask api for developer who familiar with python programming
     - if you want to save data to db just call http ajax to CMS
 
-![](./assets/stack.png "stack")
+![stack](assets/stack.png "stack")
