@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_infos",
+  "info": {
+    "name": "Card Info",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "detail": {
+      "type": "richtext"
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "external_img": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

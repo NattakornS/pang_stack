@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "user_infos",
+  "collectionName": "demographics",
   "info": {
-    "name": "User Info"
+    "name": "Demographic",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,25 +12,25 @@
   },
   "attributes": {
     "c1": {
-      "type": "string"
+      "type": "integer"
     },
     "c2": {
-      "type": "string"
-    },
-    "c3": {
-      "type": "string"
-    },
-    "c4": {
-      "type": "string"
+      "type": "integer"
     },
     "n1": {
       "type": "float"
     },
-    "n2": {
+    "c3": {
       "type": "integer"
     },
-    "n3": {
+    "c4": {
       "type": "integer"
+    },
+    "n2": {
+      "type": "float"
+    },
+    "n3": {
+      "type": "float"
     },
     "n4": {
       "type": "float"

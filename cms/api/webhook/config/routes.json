@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/webhooks",
+      "handler": "webhook.webhook",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks",
+      "handler": "webhook.webhookVerify",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/test",
+      "handler": "webhook.test",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/webhooks/setup",
+      "handler": "webhook.setup",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

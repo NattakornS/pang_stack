@@ -8,3 +8,8 @@ model
 .env
 
 documentation
+
+data
+
+cms/public/
+!cms/public/robot.txt
